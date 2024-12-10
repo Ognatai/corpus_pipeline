@@ -1,0 +1,16 @@
+coreferee==1.4.1
+matplotlib==3.9.3
+numpy==1.24.3
+pandas==2.2.3
+pathlib==1.0.1
+pathy==0.11.0
+regex==2024.11.6
+requests==2.32.3
+scipy==1.10.1
+seaborn==0.12.2
+SoMaJo==2.4.3
+spacy==3.5.0
+spacytextblob==5.0.0
+tokenizers==0.20.3
+torch==2.5.1
+transformers==4.46.3

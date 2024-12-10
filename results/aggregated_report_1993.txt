@@ -1,0 +1,78 @@
+Aggregated Report for 1993
+========================================
+
+Total Texts: 46397
+Total Actors: 242524
+Gender Distribution: {'man': 19341, 'unknown': 207536, 'woman': 15647}
+Total Mentions: 495506
+Mentions by Gender: {'man': 68730, 'unknown': 380798, 'woman': 45978}
+
+Mostly Gender Neutral: 1
+Only Generic Masculine: 36249
+Feminine Coded Words:
+  Total: 10992
+  By Gender: {'man': 1485, 'unknown': 8236, 'woman': 1271}
+
+Masculine Coded Words:
+  Total: 4915
+  By Gender: {'man': 661, 'unknown': 3784, 'woman': 470}
+
+Average Metrics:
+  total_actors: 5.23
+  total_mentions: 10.68
+  total_feminine_coded_words: 0.24
+  total_masculine_coded_words: 0.11
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 3.84
+  gender_distribution_woman: 0.34
+  gender_distribution_man: 0.42
+  gender_distribution_unknown: 4.47
+  mentions_gender_distribution_woman: 0.99
+  mentions_gender_distribution_man: 1.48
+  mentions_gender_distribution_unknown: 8.21
+  feminine_coded_words_gender_distribution_woman: 0.03
+  feminine_coded_words_gender_distribution_man: 0.03
+  feminine_coded_words_gender_distribution_unknown: 0.18
+  masculine_coded_words_gender_distribution_woman: 0.01
+  masculine_coded_words_gender_distribution_man: 0.01
+  masculine_coded_words_gender_distribution_unknown: 0.08
+  average_sentiment_all: -0.05
+  sentiment_by_gender_woman: -0.03
+  sentiment_by_gender_man: -0.03
+  sentiment_by_gender_unknown: -0.06
+
+Median Metrics:
+  total_actors: 4.00
+  total_mentions: 5.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 2.00
+  gender_distribution_woman: 0.00
+  gender_distribution_man: 0.00
+  gender_distribution_unknown: 3.00
+  mentions_gender_distribution_woman: 0.00
+  mentions_gender_distribution_man: 0.00
+  mentions_gender_distribution_unknown: 4.00
+  feminine_coded_words_gender_distribution_woman: 0.00
+  feminine_coded_words_gender_distribution_man: 0.00
+  feminine_coded_words_gender_distribution_unknown: 0.00
+  masculine_coded_words_gender_distribution_woman: 0.00
+  masculine_coded_words_gender_distribution_man: 0.00
+  masculine_coded_words_gender_distribution_unknown: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_gender_woman: 0.00
+  sentiment_by_gender_man: 0.00
+  sentiment_by_gender_unknown: 0.00
+
+Top PMI Words:
+  der: 121749.00
+  die: 107337.00
+  und: 98644.00
+  in: 61088.00
+  von: 42975.00
+  den: 41835.00
+  mit: 33329.00
+  das: 23033.00
+  zu: 22758.00
+  des: 21727.00
