@@ -1,0 +1,119 @@
+Aggregated Report for 1993
+============================================================
+
+Total Texts: 46397
+Total Actors: 242524
+Gender Distribution: {'unknown': 207536, 'woman': 15647, 'man': 19341}
+Total Mentions: 496153
+Mentions by Gender: {'unknown': 381230, 'woman': 46157, 'man': 68766}
+
+
+Minimal Metrics:
+  total_actors: 1.00
+  total_mentions: 1.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  gender_distribution_woman: 0.00
+  gender_distribution_man: 0.00
+  gender_distribution_unknown: 0.00
+  mentions_gender_distribution_woman: 0.00
+  mentions_gender_distribution_man: 0.00
+  mentions_gender_distribution_unknown: 0.00
+  feminine_coded_words_gender_distribution_woman: 0.00
+  feminine_coded_words_gender_distribution_man: 0.00
+  feminine_coded_words_gender_distribution_unknown: 0.00
+  masculine_coded_words_gender_distribution_woman: 0.00
+  masculine_coded_words_gender_distribution_man: 0.00
+  masculine_coded_words_gender_distribution_unknown: 0.00
+  average_sentiment_all: -1.00
+  sentiment_by_gender_woman: -1.00
+  sentiment_by_gender_man: -1.00
+  sentiment_by_gender_unknown: -1.00
+
+Maximal Metrics:
+  total_actors: 436.00
+  total_mentions: 1271.00
+  total_feminine_coded_words: 48.00
+  total_masculine_coded_words: 17.00
+  contains_majority_gender_neutral: 2.00
+  generic_masculine: 95.00
+  gender_distribution_woman: 12.00
+  gender_distribution_man: 10.00
+  gender_distribution_unknown: 436.00
+  mentions_gender_distribution_woman: 522.00
+  mentions_gender_distribution_man: 277.00
+  mentions_gender_distribution_unknown: 1271.00
+  feminine_coded_words_gender_distribution_woman: 23.00
+  feminine_coded_words_gender_distribution_man: 10.00
+  feminine_coded_words_gender_distribution_unknown: 48.00
+  masculine_coded_words_gender_distribution_woman: 5.00
+  masculine_coded_words_gender_distribution_man: 5.00
+  masculine_coded_words_gender_distribution_unknown: 17.00
+  average_sentiment_all: 1.00
+  sentiment_by_gender_woman: 1.00
+  sentiment_by_gender_man: 0.99
+  sentiment_by_gender_unknown: 1.00
+
+Mean Metrics:
+  total_actors: 5.23
+  total_mentions: 10.69
+  total_feminine_coded_words: 0.24
+  total_masculine_coded_words: 0.11
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 3.84
+  gender_distribution_woman: 0.34
+  gender_distribution_man: 0.42
+  gender_distribution_unknown: 4.47
+  mentions_gender_distribution_woman: 0.99
+  mentions_gender_distribution_man: 1.48
+  mentions_gender_distribution_unknown: 8.22
+  feminine_coded_words_gender_distribution_woman: 0.03
+  feminine_coded_words_gender_distribution_man: 0.03
+  feminine_coded_words_gender_distribution_unknown: 0.18
+  masculine_coded_words_gender_distribution_woman: 0.01
+  masculine_coded_words_gender_distribution_man: 0.01
+  masculine_coded_words_gender_distribution_unknown: 0.08
+  average_sentiment_all: -0.05
+  sentiment_by_gender_woman: -0.03
+  sentiment_by_gender_man: -0.03
+  sentiment_by_gender_unknown: -0.06
+
+Median Metrics:
+  total_actors: 4.00
+  total_mentions: 5.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 2.00
+  gender_distribution_woman: 0.00
+  gender_distribution_man: 0.00
+  gender_distribution_unknown: 3.00
+  mentions_gender_distribution_woman: 0.00
+  mentions_gender_distribution_man: 0.00
+  mentions_gender_distribution_unknown: 4.00
+  feminine_coded_words_gender_distribution_woman: 0.00
+  feminine_coded_words_gender_distribution_man: 0.00
+  feminine_coded_words_gender_distribution_unknown: 0.00
+  masculine_coded_words_gender_distribution_woman: 0.00
+  masculine_coded_words_gender_distribution_man: 0.00
+  masculine_coded_words_gender_distribution_unknown: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_gender_woman: 0.00
+  sentiment_by_gender_man: 0.00
+  sentiment_by_gender_unknown: 0.00
+  
+Top PMI Words Table:
+All                       Woman                     Man                       Unknown                  
+----------------------------------------------------------------------------------------------------
+gestern (5119.00)        frau (3168.00)           mann (2767.00)           gestern (4548.00)        
+frau (4744.00)           frauen (2708.00)         männer (1445.00)         präsident (1942.00)      
+frauen (3393.00)         mutter (911.00)          vater (734.00)           berlin (1701.00)         
+mann (2958.00)           männer (556.00)          herr (675.00)            frau (1493.00)           
+präsident (2048.00)      kinder (375.00)          frauen (526.00)          deutschen (1415.00)      
+berlin (1950.00)         mann (371.00)            gestern (523.00)         berliner (1402.00)       
+deutschen (1749.00)      gestern (286.00)         herren (446.00)          erklärte (1399.00)       
+männer (1634.00)         junge (272.00)           frau (427.00)            spd (1293.00)            
+mal (1587.00)            damen (256.00)           mal (267.00)             mal (1276.00)            
+erklärte (1555.00)       leben (230.00)           junge (244.00)           letzten (1262.00)        
