@@ -1,0 +1,60 @@
+Aggregated Report for 1980
+============================================================
+
+Total Texts: 0
+Total Actors: 2
+Pronoun Distribution: {'he_him': 1, 'she_her': 1}
+Total Mentions: 61
+Mentions by Pronoun: {'he_him': 59, 'she_her': 2}
+
+
+Average Metrics:
+  total_actors: 2.00
+  total_mentions: 61.00
+  total_feminine_coded_words: 1.00
+  total_masculine_coded_words: 2.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 1.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 2.00
+  mentions_pronoun_distribution_he_him: 59.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 1.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 2.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+
+Median Metrics:
+  total_actors: 2.00
+  total_mentions: 61.00
+  total_feminine_coded_words: 1.00
+  total_masculine_coded_words: 2.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 1.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 2.00
+  mentions_pronoun_distribution_he_him: 59.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 1.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 2.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+nationalen           nationalen           sechziger           
+sechziger                                 feste               
+feste                                     gegründeten         
+gegründeten                               selbsttätiges       
+selbsttätiges                             revolutionären      
+revolutionären                            gesellschaftlicher  
+gesellschaftlicher                        materiellen         
+materiellen                               menschlichen        
+menschlichen                              prager              
+prager                                    staatlichen         

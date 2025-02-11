@@ -1,0 +1,60 @@
+Aggregated Report for 2005
+============================================================
+
+Total Texts: 0
+Total Actors: 15927
+Pronoun Distribution: {'she_her': 6295, 'he_him': 9632}
+Total Mentions: 95339
+Mentions by Pronoun: {'he_him': 60078, 'she_her': 35261}
+
+
+Average Metrics:
+  total_actors: 1.59
+  total_mentions: 9.49
+  total_feminine_coded_words: 0.18
+  total_masculine_coded_words: 0.10
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.63
+  pronoun_distribution_he_him: 0.96
+  mentions_pronoun_distribution_she_her: 3.51
+  mentions_pronoun_distribution_he_him: 5.98
+  feminine_coded_words_pronoun_distribution_she_her: 0.07
+  feminine_coded_words_pronoun_distribution_he_him: 0.11
+  masculine_coded_words_pronoun_distribution_she_her: 0.04
+  masculine_coded_words_pronoun_distribution_he_him: 0.06
+  average_sentiment_all: -0.03
+  sentiment_by_pronoun_she_her: -0.04
+  sentiment_by_pronoun_he_him: -0.03
+
+Median Metrics:
+  total_actors: 1.00
+  total_mentions: 5.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 0.00
+  mentions_pronoun_distribution_he_him: 3.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+deutschen            junge                deutschen           
+letzten              deutschen            letzten             
+berliner             letzten              berliner            
+junge                berliner             nächsten            
+alten                alten                alten               
+deutsche             deutsche             politischen         
+nächsten             jungen               jungen              
+jungen               alte                 deutsche            
+politischen          letzte               politische          
+alte                 einzige              alte                

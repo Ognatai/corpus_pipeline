@@ -1,0 +1,60 @@
+Aggregated Report for 1992
+============================================================
+
+Total Texts: 0
+Total Actors: 11800
+Pronoun Distribution: {'he_him': 7227, 'she_her': 4573}
+Total Mentions: 65026
+Mentions by Pronoun: {'he_him': 42130, 'she_her': 22896}
+
+
+Average Metrics:
+  total_actors: 1.54
+  total_mentions: 8.48
+  total_feminine_coded_words: 0.16
+  total_masculine_coded_words: 0.07
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.60
+  pronoun_distribution_he_him: 0.94
+  mentions_pronoun_distribution_she_her: 2.99
+  mentions_pronoun_distribution_he_him: 5.49
+  feminine_coded_words_pronoun_distribution_she_her: 0.06
+  feminine_coded_words_pronoun_distribution_he_him: 0.09
+  masculine_coded_words_pronoun_distribution_she_her: 0.03
+  masculine_coded_words_pronoun_distribution_he_him: 0.05
+  average_sentiment_all: -0.03
+  sentiment_by_pronoun_she_her: -0.03
+  sentiment_by_pronoun_he_him: -0.03
+
+Median Metrics:
+  total_actors: 1.00
+  total_mentions: 4.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 0.00
+  mentions_pronoun_distribution_he_him: 3.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+letzten              letzten              letzten             
+deutschen            junge                deutschen           
+berliner             deutschen            berliner            
+alten                alte                 ehemaligen          
+ehemaligen           berliner             alten               
+alte                 jungen               politischen         
+politischen          alten                politische          
+junge                ehemaligen           deutsche            
+deutsche             politischen          alte                
+politische           bremer               nächsten            

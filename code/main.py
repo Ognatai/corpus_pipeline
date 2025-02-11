@@ -53,7 +53,7 @@ def process_single_file_multiprocessing(file_path, temp_dir, max_articles=None):
         print(f"[ERROR] Error processing file {file_path}: {e}")
 
 
-def process_directory(directory, temp_dir, max_articles=None, max_workers=4):
+def process_directory(directory, temp_dir, max_articles=None, max_workers=5):
     """
     Process all JSON files in a directory in parallel using multiprocessing.
 
@@ -133,17 +133,24 @@ def analyse_and_visualise_year(directory, temp_dir, results_dir, year, max_artic
 
 def main():
     """
-    Main function to process and analyse data for 1993 and 2023.
+    Main function to process and analyse data for all years.
     """
-    directories = {
-        "2023": "data/2023",
-        "1993": "data/1993"
-    }
-
+    CORPUS_DIR = Path("corpus")
     TEMP_DIR = Path("tmp")
     RESULTS_DIR = Path("results")
 
-    for year, directory in directories.items():
+    if not CORPUS_DIR.exists():
+        print(f"[ERROR] Corpus directory not found: {CORPUS_DIR}")
+        return
+
+    # Automatically detect year directories
+    directories = {year.name: str(year) for year in CORPUS_DIR.iterdir() if year.is_dir() and year.name.isdigit()}
+
+    if not directories:
+        print("[WARNING] No year directories found in the corpus.")
+        return
+
+    for year, directory in sorted(directories.items()):
         print(f"\n[INFO] Starting processing for year {year}...\n")
         year_temp_dir = TEMP_DIR / year
         year_results_dir = RESULTS_DIR / year

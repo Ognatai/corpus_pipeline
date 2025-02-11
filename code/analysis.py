@@ -83,7 +83,7 @@ def detect_sentiment(predications):
 
 def detect_gender_neutral_language(doc):
     """
-    Determines if the majority of potentially gendered words in a SpaCy document use gender-neutral forms.
+    Determines if the majority of potentially gendered words in a text use gender-neutral forms.
 
     Args:
         doc (spacy.tokens.Doc): The SpaCy document to analyse.
@@ -91,32 +91,24 @@ def detect_gender_neutral_language(doc):
     Returns:
         bool: True if the majority of potentially gendered words are gender-neutral, False otherwise.
     """
-    # Define regex patterns for gender-neutral forms
+    # Convert SpaCy document to string
+    text = doc.text
+    
+    # Define regex pattern for gender-neutral forms
     gender_neutral_pattern = r".*[a-zäöüß][IR][a-zäöüß].*|.*[:*/_].*"
-
-    # Extract nouns and proper nouns as potentially gendered candidates
-    gendered_candidates = [
-        token.text for token in doc 
-        if token.pos_ in {"NOUN", "PROPN"}  # Focus on nouns and proper nouns
-    ]
-
-    # Filter out words where capital "I" or "R" is simply sentence-initial or a proper noun
-    filtered_candidates = [
-        word for word in gendered_candidates
-        if not (word.istitle() and word[0] in "IR")  # Exclude sentence-initial/proper noun "I" or "R"
-        or re.search(gender_neutral_pattern, word)  # Include gender-neutral words like jedeR
-    ]
-
-    if not filtered_candidates:
-        return False  # If no filtered candidates, default to False
-
+    
+    # Split text into words and extract capitalised words
+    words = text.split()
+    capitalised_words = [word for word in words if word[0].isupper()]
+    
+    if not capitalised_words:
+        return False  # If no capitalised words, default to False
+    
     # Count gender-neutral forms
-    gender_neutral_count = sum(
-        1 for word in filtered_candidates if re.match(gender_neutral_pattern, word)
-    )
-
-    # Determine if the majority of gendered candidates are gender-neutral
-    return gender_neutral_count > (len(filtered_candidates) / 2)
+    gender_neutral_count = sum(1 for word in capitalised_words if re.match(gender_neutral_pattern, word))
+    
+    # Determine if the majority of capitalised words are gender-neutral
+    return gender_neutral_count > (len(capitalised_words) / 2)
     
     
 def detect_generic_masculine(doc):
@@ -129,22 +121,24 @@ def detect_generic_masculine(doc):
     Returns:
         bool: True if only masculine forms are used, False otherwise.
     """
-    # Define regex pattern for explicitly gendered forms
+    # Convert SpaCy document to string
+    text = doc.text
+    
+    # Define regex pattern for gender-neutral forms
     gender_neutral_pattern = r".*[a-zäöüß][IR][a-zäöüß].*|.*[:*/_].*"
     
-    # Extract nouns and proper nouns as potentially gendered candidates
-    gendered_candidates = [
-        token.text for token in doc 
-        if token.pos_ in {"NOUN", "PROPN"}  # Focus on nouns and proper nouns
-    ]
-
+    # Split text into words and extract capitalised words
+    words = text.split()
+    capitalised_words = [word for word in words if word[0].isupper()]
+    
+    if not capitalised_words:
+        return False  # If no capitalised words, default to False
+    
     # Count gender-neutral forms
-    gender_neutral_count = sum(
-        1 for word in gendered_candidates if re.match(gender_neutral_pattern, word)
-    )
+    gender_neutral_count = sum(1 for word in capitalised_words if re.match(gender_neutral_pattern, word))
 
     # If there are no gender-neutral words but there are gendered candidates, it’s generic masculine
-    return gender_neutral_count == 0 and len(gendered_candidates) > 0
+    return gender_neutral_count == 0 and len(capitalised_words) > 0
 
 
 def count_gendered_words(predications, gendered_words_list):
@@ -206,7 +200,7 @@ def compute_pmi(row, text, stopwords):
         stopwords (list): list of German stopwords.
 
     Returns:
-        dict: PMI scores for each word in predications.
+        dict: PMI scores for each adjective in predications.
     """
     predication_words = [
         word.lower()
@@ -220,7 +214,7 @@ def compute_pmi(row, text, stopwords):
     text_words = [
         tok.text.lower() 
         for tok in text 
-        if tok.is_alpha and tok.text.lower() not in stopwords
+        if tok.pos_ == "ADJ" and tok.is_alpha and tok.text.lower() not in stopwords
     ]
     word_freq = Counter(text_words)
     total_words = len(text_words)
@@ -272,145 +266,141 @@ def process_single_text(doc, stopwords):
 
 
 def get_actors(text):
-        """
-        Extract named entities and dependency-based actors from the text.
+    """
+    Extract named entities and dependency-based actors from the text.
 
-        Args:
-            text (spacy.Doc): Preprocessed text.
+    Args:
+        text (spacy.Doc): Preprocessed text.
 
-        Returns:
-            dict: A dictionary mapping actor names to their tokens.
-        """
-        actor_dict = {}
+    Returns:
+        dict: A dictionary mapping actor names to their tokens.
+    """
+    actor_dict = {}
 
-        for token in text:
-            # Add compound entities linked to a PERSON
-            if token.dep_ == "compound" and token.head.ent_type_ == "PER":
-                actor_dict.setdefault(token.head.text, []).append(token)
+    for token in text:
+        # Add compound entities linked to a PERSON
+        if token.dep_ == "compound" and token.head.ent_type_ == "PER":
+            actor_dict.setdefault(token.head.text, []).append(token)
 
-            # Add individual PERSON entities
-            elif token.ent_type_ == "PER" and "'" not in token.text:
-                actor_dict.setdefault(token.text, []).append(token)
+        # Add individual PERSON entities
+        elif token.ent_type_ == "PER" and "'" not in token.text:
+            actor_dict.setdefault(token.text, []).append(token)
 
-        return actor_dict
+    return actor_dict
 
 
 def get_generic_names(text, actor_dict):
-        """
-        Add generic names (e.g., "frau", "herr") to the actor dictionary.
+    """
+    Add generic names (e.g., "frau", "herr") to the actor dictionary.
 
-        Args:
-            text (spacy.Doc): Preprocessed text.
-            actor_dict (dict): Existing actor dictionary.
+    Args:
+        text (spacy.Doc): Preprocessed text.
+    actor_dict (dict): Existing actor dictionary.
 
-        Returns:
-            dict: Updated actor dictionary with generic names included.
-        """
+    Returns:
+        dict: Updated actor dictionary with generic names included.
+    """
 
-        for token in text:
-            token_lower = token.text.lower()
-            if token_lower in generic_terms:
-                actor_dict.setdefault(token_lower, []).append(token)
+    for token in text:
+        token_lower = token.text.lower()
+        if token_lower in generic_terms:
+            actor_dict.setdefault(token_lower, []).append(token)
 
-        return actor_dict
+    return actor_dict
 
 
 def combine_names(actor_dict):
-        """
-        Combines similar actor names in the actor dictionary by merging their nominations.
+    """
+    Combines similar actor names in the actor dictionary by merging their nominations.
 
-        Args:
-            actor_dict (dict): A dictionary with actor names as keys and their tokens as values.
+    Args:
+        actor_dict (dict): A dictionary with actor names as keys and their tokens as values.
 
-        Returns:
-            dict: A modified dictionary with combined actor names.
-        """
-        flagged_keys = {key for key in actor_dict if
-                        any(key in second_key for second_key in actor_dict if key != second_key)}
-        for key in flagged_keys:
-            for second_key in actor_dict:
-                if key in second_key:
-                    actor_dict[second_key].extend(actor_dict[key])
-        for key in flagged_keys:
-            actor_dict.pop(key, None)
+    Returns:
+        dict: A modified dictionary with combined actor names.
+    """
+    flagged_keys = {key for key in actor_dict if
+                    any(key in second_key for second_key in actor_dict if key != second_key)}
+    for key in flagged_keys:
+        for second_key in actor_dict:
+            if key in second_key:
+                actor_dict[second_key].extend(actor_dict[key])
+    for key in flagged_keys:
+        actor_dict.pop(key, None)
 
-        return actor_dict
+    return actor_dict
 
 
-def get_pronouns_gender(knowledgebase, text):
-        """
-        Assume gender to actors based on German pronouns and generic terms.
+def get_pronouns_main(knowledgebase, text):
+    """
+    Get pronouns that are mainly used for an actor.
 
-        Args:
-            knowledgebase (pd.DataFrame): DataFrame with actor nominations.
-            text: A spaCy-parsed document.
+    Args:
+        knowledgebase (pd.DataFrame): DataFrame with actor nominations.
+        text: A spaCy-parsed document.
 
-        Returns:
-            pd.DataFrame: Updated knowledgebase with gender assignments.
-        """
-        woman_pronouns = {"sie", "ihr", "ihre", "ihren", "ihrem", "ihres"}
-        man_pronouns = {"er", "sein", "seine", "seinen", "seinem", "seines"}
+    Returns:
+        pd.DataFrame: Updated knowledgebase with pronoun assignments.
+    """
+    she_her_pronouns = {"sie", "ihr", "ihre", "ihren", "ihrem", "ihres"}
+    he_him_pronouns = {"er", "sein", "seine", "seinen", "seinem", "seines"}
 
-        knowledgebase["pronoun"] = [[] for _ in range(len(knowledgebase))]
-        knowledgebase["gender"] = "unknown"
+    knowledgebase["pronoun"] = [[] for _ in range(len(knowledgebase))]
+    knowledgebase["main_pronoun"] = " "
 
-        # Extract pronouns and save them to actors
-        for token in text:
-            if token.pos_ == "PRON" and hasattr(text._, "coref_chains"):
-                resolved_actor = text._.coref_chains.resolve(token)
-                if resolved_actor and len(resolved_actor) == 1:
-                    actor_name = resolved_actor[0].text
-                    for index, nomination in knowledgebase["nomination"].items():
-                        if any(actor_name == nom.text for nom in nomination):
-                            knowledgebase.at[index, "pronoun"].append(token)
+    # Extract pronouns and save them to actors
+    for token in text:
+        if token.pos_ == "PRON" and hasattr(text._, "coref_chains"):
+            resolved_actor = text._.coref_chains.resolve(token)
+            if resolved_actor and len(resolved_actor) == 1:
+                actor_name = resolved_actor[0].text
+                for index, nomination in knowledgebase["nomination"].items():
+                    if any(actor_name == nom.text for nom in nomination):
+                        knowledgebase.at[index, "pronoun"].append(token)
 
-        # Assume gender based on majority pronoun
-        majority_threshold = 0.7
-        for index, pronouns in knowledgebase["pronoun"].items():
-            if pronouns:
-                woman_count = sum(1 for p in pronouns if p.text.lower() in woman_pronouns)
-                man_count = sum(1 for p in pronouns if p.text.lower() in man_pronouns)
+    # Assume main pronouns based on majority pronoun
+    majority_threshold = 0.7
+    for index, pronouns in knowledgebase["pronoun"].items():
+        if pronouns:
+            she_her_count = sum(1 for p in pronouns if p.text.lower() in she_her_pronouns)
+            he_him_count = sum(1 for p in pronouns if p.text.lower() in he_him_pronouns)
 
-                if woman_count / len(pronouns) >= majority_threshold:
-                    knowledgebase.at[index, "gender"] = "woman"
-                elif man_count / len(pronouns) >= majority_threshold:
-                    knowledgebase.at[index, "gender"] = "man"
+            if she_her_count / len(pronouns) >= majority_threshold:
+                knowledgebase.at[index, "main_pronoun"] = "she_her"
+            elif he_him_count / len(pronouns) >= majority_threshold:
+                knowledgebase.at[index, "main_pronoun"] = "he_him"
 
-        for index in knowledgebase.index:
-            if knowledgebase.at[index, 'gender'] == 'unknown':
-                if index in generic_woman:
-                    knowledgebase.at[index, 'gender'] = 'woman'
-                elif index in generic_man:
-                    knowledgebase.at[index, 'gender'] = 'man'
-
-        return knowledgebase
+    # Drop entries without main pronoun
+    knowledgebase.drop(knowledgebase[knowledgebase["main_pronoun"].str.strip() == ""].index, inplace=True)
+        
+    return knowledgebase
 
 
 def build_knowledgebase_nomination(text):
-        """
-        Constructs a knowledgebase of actors mentioned in the text,
-        including named entities, generic terms, and combined names.
+    """
+    Constructs a knowledgebase of actors mentioned in the text,
+    including named entities, generic terms, and combined names.
 
-        Args:
-            text (spacy.Doc): Preprocessed text with SpaCy pipeline.
+    Args:
+        text (spacy.Doc): Preprocessed text with SpaCy pipeline.
 
-        Returns:
-            pd.DataFrame: A DataFrame containing actor names and their tokens.
-        """
-        # Step 1: Extract named entities and dependency-based actors and combine entities that belong together
-        actors = combine_names(get_actors(text))  # Capture both named entities and dependency relations
+    Returns:
+        pd.DataFrame: A DataFrame containing actor names and their tokens.
+    """
+    # Step 1: Extract named entities and dependency-based actors and combine entities that belong together
+    actors = combine_names(get_actors(text))  # Capture both named entities and dependency relations
 
-        # Step 2: Add generic names like "frau" or "herr"
-        actors = get_generic_names(text, actors)
+    # Step 2: Add generic names like "frau" or "herr"
+    actors = get_generic_names(text, actors)
 
-        # Step 3: Create a DataFrame for the knowledgebase
-        knowledgebase = pd.Series(actors).to_frame()
-        knowledgebase.rename(columns={0: "nomination"}, inplace=True)
+    # Step 3: Create a DataFrame for the knowledgebase
+    knowledgebase = pd.Series(actors).to_frame()
+    knowledgebase.rename(columns={0: "nomination"}, inplace=True)
 
-        # Step 4: Add pronouns and gender to the knowledgebase
-        knowledgebase = get_pronouns_gender(knowledgebase, text)
+    # Step 4: Add pronouns and main used pronouns to the knowledgebase and dropp all entries without main pronouns
+    knowledgebase = get_pronouns_main(knowledgebase, text)
 
-        return knowledgebase
+    return knowledgebase
 
 
 def calculate_pmi(word_freq, actor_word_freq, total_words, total_actor_words):

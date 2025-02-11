@@ -1,0 +1,60 @@
+Aggregated Report for 2011
+============================================================
+
+Total Texts: 0
+Total Actors: 21589
+Pronoun Distribution: {'he_him': 13459, 'she_her': 8130}
+Total Mentions: 123961
+Mentions by Pronoun: {'he_him': 80505, 'she_her': 43456}
+
+
+Average Metrics:
+  total_actors: 1.51
+  total_mentions: 8.70
+  total_feminine_coded_words: 0.18
+  total_masculine_coded_words: 0.08
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.45
+  pronoun_distribution_she_her: 0.57
+  pronoun_distribution_he_him: 0.94
+  mentions_pronoun_distribution_she_her: 3.05
+  mentions_pronoun_distribution_he_him: 5.65
+  feminine_coded_words_pronoun_distribution_she_her: 0.07
+  feminine_coded_words_pronoun_distribution_he_him: 0.11
+  masculine_coded_words_pronoun_distribution_she_her: 0.03
+  masculine_coded_words_pronoun_distribution_he_him: 0.05
+  average_sentiment_all: -0.02
+  sentiment_by_pronoun_she_her: -0.03
+  sentiment_by_pronoun_he_him: -0.02
+
+Median Metrics:
+  total_actors: 1.00
+  total_mentions: 5.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 0.00
+  mentions_pronoun_distribution_he_him: 3.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+letzten              junge                letzten             
+deutschen            letzten              deutschen           
+berliner             deutschen            berliner            
+junge                berliner             politischen         
+politischen          nächsten             alten               
+nächsten             alte                 nächsten            
+alten                jungen               politische          
+jungen               alten                deutsche            
+politische           politischen          jungen              
+deutsche             deutsche             junge               

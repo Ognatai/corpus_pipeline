@@ -1,0 +1,60 @@
+Aggregated Report for 2004
+============================================================
+
+Total Texts: 0
+Total Actors: 16625
+Pronoun Distribution: {'she_her': 6314, 'he_him': 10311}
+Total Mentions: 99708
+Mentions by Pronoun: {'she_her': 34997, 'he_him': 64711}
+
+
+Average Metrics:
+  total_actors: 1.60
+  total_mentions: 9.60
+  total_feminine_coded_words: 0.19
+  total_masculine_coded_words: 0.09
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.61
+  pronoun_distribution_he_him: 0.99
+  mentions_pronoun_distribution_she_her: 3.37
+  mentions_pronoun_distribution_he_him: 6.23
+  feminine_coded_words_pronoun_distribution_she_her: 0.07
+  feminine_coded_words_pronoun_distribution_he_him: 0.11
+  masculine_coded_words_pronoun_distribution_she_her: 0.03
+  masculine_coded_words_pronoun_distribution_he_him: 0.06
+  average_sentiment_all: -0.03
+  sentiment_by_pronoun_she_her: -0.04
+  sentiment_by_pronoun_he_him: -0.02
+
+Median Metrics:
+  total_actors: 1.00
+  total_mentions: 5.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 0.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 0.00
+  mentions_pronoun_distribution_he_him: 3.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+letzten              junge                letzten             
+deutschen            letzten              deutschen           
+berliner             deutschen            gleiche             
+junge                jungen               chinesischen        
+jungen               berliner             abgelegenen         
+gleiche              alte                 berliner            
+deutsche             deutsche             alten               
+nächsten             nächsten             nächsten            
+alten                alten                deutsche            
+chinesischen         einzige              politischen         

@@ -1,119 +1,60 @@
 Aggregated Report for 2023
 ============================================================
 
-Total Texts: 26357
-Total Actors: 188527
-Gender Distribution: {'unknown': 156317, 'woman': 16271, 'man': 15939}
-Total Mentions: 468358
-Mentions by Gender: {'unknown': 332220, 'woman': 64804, 'man': 71334}
+Total Texts: 0
+Total Actors: 17161
+Pronoun Distribution: {'he_him': 9088, 'she_her': 8073}
+Total Mentions: 109634
+Mentions by Pronoun: {'he_him': 60008, 'she_her': 49626}
 
 
-Minimal Metrics:
+Average Metrics:
+  total_actors: 1.67
+  total_mentions: 10.66
+  total_feminine_coded_words: 0.27
+  total_masculine_coded_words: 0.11
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.31
+  pronoun_distribution_she_her: 0.79
+  pronoun_distribution_he_him: 0.88
+  mentions_pronoun_distribution_she_her: 4.83
+  mentions_pronoun_distribution_he_him: 5.84
+  feminine_coded_words_pronoun_distribution_she_her: 0.13
+  feminine_coded_words_pronoun_distribution_he_him: 0.14
+  masculine_coded_words_pronoun_distribution_she_her: 0.05
+  masculine_coded_words_pronoun_distribution_he_him: 0.06
+  average_sentiment_all: -0.03
+  sentiment_by_pronoun_she_her: -0.03
+  sentiment_by_pronoun_he_him: -0.02
+
+Median Metrics:
   total_actors: 1.00
-  total_mentions: 1.00
+  total_mentions: 5.00
   total_feminine_coded_words: 0.00
   total_masculine_coded_words: 0.00
   contains_majority_gender_neutral: 0.00
   generic_masculine: 0.00
-  gender_distribution_woman: 0.00
-  gender_distribution_man: 0.00
-  gender_distribution_unknown: 0.00
-  mentions_gender_distribution_woman: 0.00
-  mentions_gender_distribution_man: 0.00
-  mentions_gender_distribution_unknown: 0.00
-  feminine_coded_words_gender_distribution_woman: 0.00
-  feminine_coded_words_gender_distribution_man: 0.00
-  feminine_coded_words_gender_distribution_unknown: 0.00
-  masculine_coded_words_gender_distribution_woman: 0.00
-  masculine_coded_words_gender_distribution_man: 0.00
-  masculine_coded_words_gender_distribution_unknown: 0.00
-  average_sentiment_all: -1.00
-  sentiment_by_gender_woman: -1.00
-  sentiment_by_gender_man: -1.00
-  sentiment_by_gender_unknown: -1.00
-
-Maximal Metrics:
-  total_actors: 109.00
-  total_mentions: 1597.00
-  total_feminine_coded_words: 48.00
-  total_masculine_coded_words: 13.00
-  contains_majority_gender_neutral: 0.00
-  generic_masculine: 109.00
-  gender_distribution_woman: 16.00
-  gender_distribution_man: 12.00
-  gender_distribution_unknown: 109.00
-  mentions_gender_distribution_woman: 864.00
-  mentions_gender_distribution_man: 1517.00
-  mentions_gender_distribution_unknown: 1571.00
-  feminine_coded_words_gender_distribution_woman: 16.00
-  feminine_coded_words_gender_distribution_man: 47.00
-  feminine_coded_words_gender_distribution_unknown: 31.00
-  masculine_coded_words_gender_distribution_woman: 8.00
-  masculine_coded_words_gender_distribution_man: 6.00
-  masculine_coded_words_gender_distribution_unknown: 11.00
-  average_sentiment_all: 1.00
-  sentiment_by_gender_woman: 0.99
-  sentiment_by_gender_man: 1.00
-  sentiment_by_gender_unknown: 1.00
-
-Mean Metrics:
-  total_actors: 7.15
-  total_mentions: 17.77
-  total_feminine_coded_words: 0.48
-  total_masculine_coded_words: 0.21
-  contains_majority_gender_neutral: 0.00
-  generic_masculine: 4.68
-  gender_distribution_woman: 0.62
-  gender_distribution_man: 0.60
-  gender_distribution_unknown: 5.93
-  mentions_gender_distribution_woman: 2.46
-  mentions_gender_distribution_man: 2.71
-  mentions_gender_distribution_unknown: 12.60
-  feminine_coded_words_gender_distribution_woman: 0.08
-  feminine_coded_words_gender_distribution_man: 0.07
-  feminine_coded_words_gender_distribution_unknown: 0.33
-  masculine_coded_words_gender_distribution_woman: 0.03
-  masculine_coded_words_gender_distribution_man: 0.03
-  masculine_coded_words_gender_distribution_unknown: 0.15
-  average_sentiment_all: -0.05
-  sentiment_by_gender_woman: -0.05
-  sentiment_by_gender_man: -0.04
-  sentiment_by_gender_unknown: -0.05
-
-Median Metrics:
-  total_actors: 5.00
-  total_mentions: 10.00
-  total_feminine_coded_words: 0.00
-  total_masculine_coded_words: 0.00
-  contains_majority_gender_neutral: 0.00
-  generic_masculine: 3.00
-  gender_distribution_woman: 0.00
-  gender_distribution_man: 0.00
-  gender_distribution_unknown: 4.00
-  mentions_gender_distribution_woman: 0.00
-  mentions_gender_distribution_man: 0.00
-  mentions_gender_distribution_unknown: 7.00
-  feminine_coded_words_gender_distribution_woman: 0.00
-  feminine_coded_words_gender_distribution_man: 0.00
-  feminine_coded_words_gender_distribution_unknown: 0.00
-  masculine_coded_words_gender_distribution_woman: 0.00
-  masculine_coded_words_gender_distribution_man: 0.00
-  masculine_coded_words_gender_distribution_unknown: 0.00
+  pronoun_distribution_she_her: 1.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 2.00
+  mentions_pronoun_distribution_he_him: 2.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
   average_sentiment_all: 0.00
-  sentiment_by_gender_woman: 0.00
-  sentiment_by_gender_man: 0.00
-  sentiment_by_gender_unknown: 0.00
-  
-Top PMI Words Table:
-All                       Woman                     Man                       Unknown                  
-----------------------------------------------------------------------------------------------------
-berlin (3669.00)         frau (2372.00)           mann (1688.00)           berlin (3482.00)         
-frau (3518.00)           frauen (1879.00)         männer (1113.00)         präsident (1972.00)      
-präsident (2214.00)      mutter (1062.00)         vater (845.00)           ukraine (1361.00)        
-frauen (2091.00)         junge (412.00)           frauen (427.00)          mal (1298.00)            
-ukraine (1733.00)        männer (402.00)          herr (302.00)            frau (1291.00)           
-mal (1723.00)            kinder (334.00)          frau (288.00)            redakteur (1248.00)      
-mann (1701.00)           menschen (320.00)        präsident (279.00)       berliner (1242.00)       
-menschen (1587.00)       damen (270.00)           mal (278.00)             redakteurin (1237.00)    
-mutter (1458.00)         mal (266.00)             menschen (245.00)        menschen (1220.00)       
-russischen (1415.00)     erzählt (256.00)         damen (245.00)           kauffrau (1208.00)       
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+letzten              junge                letzten             
+deutschen            letzten              russischen          
+junge                deutschen            deutschen           
+russischen           jungen               politische          
+berliner             deutsche             berliner            
+deutsche             berliner             politischen         
+politische           russischen           ukrainischen        
+politischen          nächsten             ukrainische         
+jungen               alten                russische           
+nächsten             alte                 deutsche            

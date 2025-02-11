@@ -1,0 +1,58 @@
+Aggregated Report for 1985
+============================================================
+
+Total Texts: 0
+Total Actors: 3
+Pronoun Distribution: {'she_her': 3}
+Total Mentions: 118
+Mentions by Pronoun: {'she_her': 118}
+
+
+Average Metrics:
+  total_actors: 3.00
+  total_mentions: 118.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 4.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 3.00
+  pronoun_distribution_he_him: 0.00
+  mentions_pronoun_distribution_she_her: 118.00
+  mentions_pronoun_distribution_he_him: 0.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 4.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+
+Median Metrics:
+  total_actors: 3.00
+  total_mentions: 118.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 4.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 3.00
+  pronoun_distribution_he_him: 0.00
+  mentions_pronoun_distribution_she_her: 118.00
+  mentions_pronoun_distribution_he_him: 0.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 4.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+etablierten          etablierten                              
+linken               linken                                   
+empfindlichen        empfindlichen                            
+deutsche             deutsche                                 
+wichtigste           wichtigste                               
+damaligen            damaligen                                
+internationalen      internationalen                          
+konkreten            konkreten                                
+deutschem            deutschem                                
+unterstützten        unterstützten                            

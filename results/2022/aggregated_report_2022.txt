@@ -1,0 +1,60 @@
+Aggregated Report for 2022
+============================================================
+
+Total Texts: 0
+Total Actors: 17832
+Pronoun Distribution: {'he_him': 9508, 'she_her': 8324}
+Total Mentions: 113930
+Mentions by Pronoun: {'he_him': 61417, 'she_her': 52513}
+
+
+Average Metrics:
+  total_actors: 1.67
+  total_mentions: 10.70
+  total_feminine_coded_words: 0.25
+  total_masculine_coded_words: 0.11
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.29
+  pronoun_distribution_she_her: 0.78
+  pronoun_distribution_he_him: 0.89
+  mentions_pronoun_distribution_she_her: 4.93
+  mentions_pronoun_distribution_he_him: 5.77
+  feminine_coded_words_pronoun_distribution_she_her: 0.13
+  feminine_coded_words_pronoun_distribution_he_him: 0.12
+  masculine_coded_words_pronoun_distribution_she_her: 0.05
+  masculine_coded_words_pronoun_distribution_he_him: 0.06
+  average_sentiment_all: -0.02
+  sentiment_by_pronoun_she_her: -0.03
+  sentiment_by_pronoun_he_him: -0.02
+
+Median Metrics:
+  total_actors: 1.00
+  total_mentions: 5.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 1.00
+  pronoun_distribution_he_him: 1.00
+  mentions_pronoun_distribution_she_her: 2.00
+  mentions_pronoun_distribution_he_him: 2.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: 0.00
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: 0.00
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+russischen           junge                russischen          
+letzten              letzten              deutschen           
+deutschen            russischen           letzten             
+junge                deutschen            russische           
+russische            berliner             ukrainischen        
+ukrainischen         nächsten             ukrainische         
+ukrainische          russische            politischen         
+berliner             ukrainischen         berliner            
+nächsten             jungen               politische          
+politischen          alte                 nächsten            

@@ -18,10 +18,9 @@ def save_human_readable_report(aggregated_report, results_dir, year, temp_dir):
         temp_dir (Path): Directory containing individual knowledgebases.
     """
     report_path = results_dir / f"aggregated_report_{year}.txt"
-    tmp_path = temp_dir / str(year)
     try:
         # Count total number of texts by counting the knowledge base files
-        total_texts = len(list(tmp_path.glob("knowledgebase_*.pkl")))
+        total_texts = len(list(temp_dir.glob("knowledgebase_*.pkl")))
 
         with open(report_path, "w", encoding="utf-8") as file:
             file.write(f"Aggregated Report for {year}\n")
@@ -29,18 +28,9 @@ def save_human_readable_report(aggregated_report, results_dir, year, temp_dir):
 
             file.write(f"Total Texts: {total_texts}\n")
             file.write(f"Total Actors: {aggregated_report['total_actors']}\n")
-            file.write(f"Gender Distribution: {aggregated_report['gender_distribution']}\n")
+            file.write(f"Pronoun Distribution: {aggregated_report['pronoun_distribution']}\n")
             file.write(f"Total Mentions: {aggregated_report['total_mentions']}\n")
-            file.write(f"Mentions by Gender: {aggregated_report['mentions_gender_distribution']}\n\n")
-            
-            file.write("Minimal Metrics:\n")
-            for metric, value in aggregated_report['min_metrics'].items():
-                file.write(f"  {metric}: {value:.2f}\n")
-            
-            file.write("\nMaximal Metrics:\n")
-            for metric, value in aggregated_report['max_metrics'].items():
-                file.write(f"  {metric}: {value:.2f}\n")
-            
+            file.write(f"Mentions by Pronoun: {aggregated_report['mentions_pronoun_distribution']}\n\n")
             file.write("\nMean Metrics:\n")
             for metric, value in aggregated_report['average_metrics'].items():
                 file.write(f"  {metric}: {value:.2f}\n")
@@ -49,36 +39,29 @@ def save_human_readable_report(aggregated_report, results_dir, year, temp_dir):
             for metric, value in aggregated_report['median_metrics'].items():
                 file.write(f"  {metric}: {value:.2f}\n")
                 
-            file.write("\nTop PMI Words Table:\n")
-            file.write(f"{'All':<25} {'Woman':<25} {'Man':<25} {'Unknown':<25}\n")
-            file.write("-" * 100 + "\n")
+            file.write("\nTop PMI Adjectives Table:\n")
+            file.write(f"{'All':<20} {'she/her':<20} {'he/him':<20}\n")
+            file.write("-" * 80 + "\n")
 
             # Prepare lists of words and scores for each category
             top_all = aggregated_report["top_pmi_words"]
-            top_woman = aggregated_report["top_pmi_words_gender_distribution"].get("woman", [])
-            top_man = aggregated_report["top_pmi_words_gender_distribution"].get("man", [])
-            top_unknown = aggregated_report["top_pmi_words_gender_distribution"].get("unknown", [])
+            top_she_her = aggregated_report["top_pmi_words_pronoun_distribution"].get("she_her", [])
+            top_he_him = aggregated_report["top_pmi_words_pronoun_distribution"].get("he_him", [])
 
             # Ensure all lists have the same length
-            max_length = max(len(top_all), len(top_woman), len(top_man), len(top_unknown))
+            max_length = max(len(top_all), len(top_she_her), len(top_he_him))
             top_all += [("", 0)] * (max_length - len(top_all))
-            top_woman += [("", 0)] * (max_length - len(top_woman))
-            top_man += [("", 0)] * (max_length - len(top_man))
-            top_unknown += [("", 0)] * (max_length - len(top_unknown))
-
+            top_she_her += [("", 0)] * (max_length - len(top_she_her))
+            top_he_him += [("", 0)] * (max_length - len(top_he_him))
+            
             # Write rows for the table
             for i in range(max_length):
                 all_word, all_score = top_all[i]
-                woman_word, woman_score = top_woman[i]
-                man_word, man_score = top_man[i]
-                unknown_word, unknown_score = top_unknown[i]
+                she_her_word, she_her_score = top_she_her[i]
+                he_him_word, he_him_score = top_he_him[i]
 
                 file.write(
-                    f"{all_word} ({all_score:<.2f})".ljust(25)
-                    + f"{woman_word} ({woman_score:<.2f})".ljust(25)
-                    + f"{man_word} ({man_score:<.2f})".ljust(25)
-                    + f"{unknown_word} ({unknown_score:<.2f})".ljust(25)
-                    + "\n"
+                    f"{all_word:<20} {she_her_word:<20} {he_him_word:<20}\n"
                 )
 
         print(f"[INFO] Human-readable report saved to {report_path}")
@@ -86,6 +69,8 @@ def save_human_readable_report(aggregated_report, results_dir, year, temp_dir):
         print(f"[ERROR] Directory for year {year} does not exist: {tmp_path}")
     except Exception as e:
         print(f"[ERROR] Failed to save human-readable report: {e}")
+
+
 
 
 def generate_individual_report(knowledgebase):
@@ -104,14 +89,14 @@ def generate_individual_report(knowledgebase):
     try:
         # calculate metrics
         total_actors = len(knowledgebase)
-        gender_distribution = knowledgebase["gender"].value_counts().to_dict()
+        pronoun_distribution = knowledgebase["main_pronoun"].value_counts().to_dict()
         total_mentions = knowledgebase["mention_count"].sum()
-        mentions_gender_distribution = knowledgebase.groupby("gender")["mention_count"].sum().to_dict()
+        mentions_pronoun_distribution = knowledgebase.groupby("main_pronoun")["mention_count"].sum().to_dict()
         total_feminine_coded_words = knowledgebase["feminine_coded_words"].sum()
-        feminine_coded_words_gender_distribution = knowledgebase.groupby("gender")[
+        feminine_coded_words_pronoun_distribution = knowledgebase.groupby("main_pronoun")[
             "feminine_coded_words"].sum().to_dict()
         total_masculine_coded_words = knowledgebase["masculine_coded_words"].sum()
-        masculine_coded_words_gender_distribution = knowledgebase.groupby("gender")[
+        masculine_coded_words_pronoun_distribution = knowledgebase.groupby("main_pronoun")[
             "masculine_coded_words"].sum().to_dict()
         top_pmi_words = Counter(
             word for pmi in knowledgebase["pmi"] for word in (pmi or {})
@@ -119,39 +104,39 @@ def generate_individual_report(knowledgebase):
         contains_majority_gender_neutral = knowledgebase["contains_majority_gender_neutral"].sum()
         generic_masculine = knowledgebase["generic_masculine"].sum()
         average_sentiment_all = knowledgebase["sentiment"].apply(lambda x: x["average_sentiment"]).mean()
-        sentiment_by_gender = {}
-        for gender in ["woman", "man", "unknown"]:
-            gender_data = knowledgebase[knowledgebase["gender"] == gender]
-            sentiment_by_gender[gender] = (
-                gender_data["sentiment"].apply(lambda x: x["average_sentiment"]).mean()
-                if not gender_data.empty
+        sentiment_by_pronoun = {}
+        for pronoun in ["she_her", "he_him"]:
+            pronoun_data = knowledgebase[knowledgebase["main_pronoun"] == pronoun]
+            sentiment_by_pronoun[pronoun] = (
+                pronoun_data["sentiment"].apply(lambda x: x["average_sentiment"]).mean()
+                if not pronoun_data.empty
                 else None
             )
-        top_pmi_words_gender_distribution = {}
-        for gender in ["woman", "man", "unknown"]:
-            gender_data = knowledgebase[knowledgebase["gender"] == gender]
+        top_pmi_words_pronoun_distribution = {}
+        for pronoun in ["she_her", "he_him"]:
+            pronoun_data = knowledgebase[knowledgebase["main_pronoun"] == pronoun]
             pmi_counter = Counter(
                 word
-                for pmi in gender_data["pmi"]
+                for pmi in pronoun_data["pmi"]
                 for word in (pmi or {})
             )
-            top_pmi_words_gender_distribution[gender] = pmi_counter.most_common(10)
+            top_pmi_words_pronoun_distribution[pronoun] = pmi_counter.most_common(10)
 
         report = {
             "total_actors": total_actors,
-            "gender_distribution": gender_distribution,
+            "pronoun_distribution": pronoun_distribution,
             "total_mentions": total_mentions,
-            "mentions_gender_distribution": mentions_gender_distribution,
+            "mentions_pronoun_distribution": mentions_pronoun_distribution,
             "total_feminine_coded_words": total_feminine_coded_words,
-            "feminine_coded_words_gender_distribution": feminine_coded_words_gender_distribution,
+            "feminine_coded_words_pronoun_distribution": feminine_coded_words_pronoun_distribution,
             "total_masculine_coded_words": total_masculine_coded_words,
-            "masculine_coded_words_gender_distribution": masculine_coded_words_gender_distribution,
+            "masculine_coded_words_pronoun_distribution": masculine_coded_words_pronoun_distribution,
             "top_pmi_words": top_pmi_words,
-            "top_pmi_words_gender_distribution": top_pmi_words_gender_distribution,
+            "top_pmi_words_pronoun_distribution": top_pmi_words_pronoun_distribution,
             "contains_majority_gender_neutral": contains_majority_gender_neutral,
             "generic_masculine": generic_masculine,
             "average_sentiment": average_sentiment_all,
-            "sentiment_by_gender": sentiment_by_gender
+            "sentiment_by_pronoun": sentiment_by_pronoun
         }
     except Exception as e:
         print(f"[ERROR] Error in generate_individual_report: {e}")
@@ -173,26 +158,24 @@ def compile_aggregated_report(knowledgebases):
     # Initialise accumulated data
     accumulated_data = {
         "total_actors": 0,
-        "gender_distribution": defaultdict(int),
+        "pronoun_distribution": defaultdict(int),
         "total_mentions": 0,
-        "mentions_gender_distribution": defaultdict(int),
+        "mentions_pronoun_distribution": defaultdict(int),
         "total_feminine_coded_words": 0,
-        "feminine_coded_words_gender_distribution": defaultdict(int),
+        "feminine_coded_words_pronoun_distribution": defaultdict(int),
         "total_masculine_coded_words": 0,
-        "masculine_coded_words_gender_distribution": defaultdict(int),
+        "masculine_coded_words_pronoun_distribution": defaultdict(int),
         "contains_majority_gender_neutral": 0,
         "generic_masculine": 0,
         "pmi_words": Counter(),
-        "top_pmi_words_gender_distribution":  {
-            "woman": Counter(),
-            "man": Counter(),
-            "unknown": Counter()
+        "top_pmi_words_pronoun_distribution":  {
+            "she_her": Counter(),
+            "he_him": Counter()
         },
         "average_sentiment_all": [],
-        "sentiment_by_gender": {
-            "woman": [],
-            "man": [],
-            "unknown": []
+        "sentiment_by_pronoun": {
+            "she_her": [],
+            "he_him": []
         }
     }
 
@@ -204,22 +187,17 @@ def compile_aggregated_report(knowledgebases):
         "total_masculine_coded_words": [],
         "contains_majority_gender_neutral": [],
         "generic_masculine": [],
-        "gender_distribution_woman": [],
-        "gender_distribution_man": [],
-        "gender_distribution_unknown": [],
-        "mentions_gender_distribution_woman": [],
-        "mentions_gender_distribution_man": [],
-        "mentions_gender_distribution_unknown": [],
-        "feminine_coded_words_gender_distribution_woman": [],
-        "feminine_coded_words_gender_distribution_man": [],
-        "feminine_coded_words_gender_distribution_unknown": [],
-        "masculine_coded_words_gender_distribution_woman": [],
-        "masculine_coded_words_gender_distribution_man": [],
-        "masculine_coded_words_gender_distribution_unknown": [],
+        "pronoun_distribution_she_her": [],
+        "pronoun_distribution_he_him": [],
+        "mentions_pronoun_distribution_she_her": [],
+        "mentions_pronoun_distribution_he_him": [],
+        "feminine_coded_words_pronoun_distribution_she_her": [],
+        "feminine_coded_words_pronoun_distribution_he_him": [],
+        "masculine_coded_words_pronoun_distribution_she_her": [],
+        "masculine_coded_words_pronoun_distribution_he_him": [],
         "average_sentiment_all": [],
-        "sentiment_by_gender_woman": [],
-        "sentiment_by_gender_man": [],
-        "sentiment_by_gender_unknown": []
+        "sentiment_by_pronoun_she_her": [],
+        "sentiment_by_pronoun_he_him": []
     }
 
     # Count documents with the flags set
@@ -251,53 +229,53 @@ def compile_aggregated_report(knowledgebases):
         individual_values["contains_majority_gender_neutral"].append(report["contains_majority_gender_neutral"])
         individual_values["generic_masculine"].append(report["generic_masculine"])
 
-        for subkey in ["woman", "man", "unknown"]:
-            individual_values[f"gender_distribution_{subkey}"].append(
-                report["gender_distribution"].get(subkey, 0)
+        for subkey in ["she_her", "he_him"]:
+            individual_values[f"pronoun_distribution_{subkey}"].append(
+                report["pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"mentions_gender_distribution_{subkey}"].append(
-                report["mentions_gender_distribution"].get(subkey, 0)
+            individual_values[f"mentions_pronoun_distribution_{subkey}"].append(
+                report["mentions_pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"feminine_coded_words_gender_distribution_{subkey}"].append(
-                report["feminine_coded_words_gender_distribution"].get(subkey, 0)
+            individual_values[f"feminine_coded_words_pronoun_distribution_{subkey}"].append(
+                report["feminine_coded_words_pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"masculine_coded_words_gender_distribution_{subkey}"].append(
-                report["masculine_coded_words_gender_distribution"].get(subkey, 0)
+            individual_values[f"masculine_coded_words_pronoun_distribution_{subkey}"].append(
+                report["masculine_coded_words_pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"sentiment_by_gender_{subkey}"].append(
-                report["sentiment_by_gender"].get(subkey, 0)
+            individual_values[f"sentiment_by_pronoun_{subkey}"].append(
+                report["sentiment_by_pronoun"].get(subkey, 0)
             )
 
         # Aggregate totals
         accumulated_data["total_actors"] += report["total_actors"]
         accumulated_data["contains_majority_gender_neutral"] += report["contains_majority_gender_neutral"]
         accumulated_data["generic_masculine"] += report["generic_masculine"]
-        for key, value in report["gender_distribution"].items():
-            accumulated_data["gender_distribution"][key] += value
+        for key, value in report["pronoun_distribution"].items():
+            accumulated_data["pronoun_distribution"][key] += value
 
         accumulated_data["total_mentions"] += report["total_mentions"]
-        for key, value in report["mentions_gender_distribution"].items():
-            accumulated_data["mentions_gender_distribution"][key] += value
+        for key, value in report["mentions_pronoun_distribution"].items():
+            accumulated_data["mentions_pronoun_distribution"][key] += value
 
         accumulated_data["total_feminine_coded_words"] += report["total_feminine_coded_words"]
-        for key, value in report["feminine_coded_words_gender_distribution"].items():
-            accumulated_data["feminine_coded_words_gender_distribution"][key] += value
+        for key, value in report["feminine_coded_words_pronoun_distribution"].items():
+            accumulated_data["feminine_coded_words_pronoun_distribution"][key] += value
 
         accumulated_data["total_masculine_coded_words"] += report["total_masculine_coded_words"]
-        for key, value in report["masculine_coded_words_gender_distribution"].items():
-            accumulated_data["masculine_coded_words_gender_distribution"][key] += value
+        for key, value in report["masculine_coded_words_pronoun_distribution"].items():
+            accumulated_data["masculine_coded_words_pronoun_distribution"][key] += value
 
         if isinstance(report["top_pmi_words"], list):
             accumulated_data["pmi_words"].update(dict(report["top_pmi_words"]))
             
-        for gender in ["woman", "man", "unknown"]:
-            accumulated_data["top_pmi_words_gender_distribution"][gender].update(
-                dict(report["top_pmi_words_gender_distribution"].get(gender, []))
+        for pronoun in ["she_her", "he_him"]:
+            accumulated_data["top_pmi_words_pronoun_distribution"][pronoun].update(
+                dict(report["top_pmi_words_pronoun_distribution"].get(pronoun, []))
             )
 
-        for gender in ["woman", "man", "unknown"]:
-            if report["sentiment_by_gender"][gender] is not None:
-                accumulated_data["sentiment_by_gender"][gender].append(report["sentiment_by_gender"][gender])
+        for pronoun in ["she_her", "he_him"]:
+            if report["sentiment_by_pronoun"][pronoun] is not None:
+                accumulated_data["sentiment_by_pronoun"][pronoun].append(report["sentiment_by_pronoun"][pronoun])
 
         accumulated_data["average_sentiment_all"].append(report["average_sentiment"])
 
@@ -307,58 +285,54 @@ def compile_aggregated_report(knowledgebases):
         if accumulated_data["average_sentiment_all"]
         else None
     )
-    sentiment_by_gender = {
-        gender: (sum(values) / len(values)) if values else None
-        for gender, values in accumulated_data["sentiment_by_gender"].items()
+    sentiment_by_pronoun = {
+        pronoun: (sum(values) / len(values)) if values else None
+        for pronoun, values in accumulated_data["sentiment_by_pronoun"].items()
     }
 
     # Convert accumulated data counters to dictionaries
-    accumulated_data["gender_distribution"] = dict(accumulated_data["gender_distribution"])
-    accumulated_data["mentions_gender_distribution"] = dict(accumulated_data["mentions_gender_distribution"])
-    accumulated_data["feminine_coded_words_gender_distribution"] = dict(
-        accumulated_data["feminine_coded_words_gender_distribution"]
+    accumulated_data["pronoun_distribution"] = dict(accumulated_data["pronoun_distribution"])
+    accumulated_data["mentions_pronoun_distribution"] = dict(accumulated_data["mentions_pronoun_distribution"])
+    accumulated_data["feminine_coded_words_pronoun_distribution"] = dict(
+        accumulated_data["feminine_coded_words_pronoun_distribution"]
     )
-    accumulated_data["masculine_coded_words_gender_distribution"] = dict(
-        accumulated_data["masculine_coded_words_gender_distribution"]
+    accumulated_data["masculine_coded_words_pronoun_distribution"] = dict(
+        accumulated_data["masculine_coded_words_pronoun_distribution"]
     )
-    accumulated_data["top_pmi_words_gender_distribution"] = {
-        gender: counter.most_common(10)
-        for gender, counter in accumulated_data["top_pmi_words_gender_distribution"].items()
+    accumulated_data["top_pmi_words_pronoun_distribution"] = {
+        pronoun: counter.most_common(10)
+        for pronoun, counter in accumulated_data["top_pmi_words_pronoun_distribution"].items()
     }
 
-    # Calculate mins, max, averages and medians
+    # Calculate averages and medians
     df = pd.DataFrame(individual_values)
     averages = df.mean(numeric_only=True).to_dict()
     medians = df.median(numeric_only=True).to_dict()
-    mins = df.min(numeric_only=True).to_dict()
-    maxs = df.max(numeric_only=True).to_dict()
 
     # Prepare the aggregated report
     aggregated_report = {
         "total_actors": accumulated_data["total_actors"],
-        "gender_distribution": accumulated_data["gender_distribution"],
+        "pronoun_distribution": accumulated_data["pronoun_distribution"],
         "total_mentions": accumulated_data["total_mentions"],
-        "mentions_gender_distribution": accumulated_data["mentions_gender_distribution"],
+        "mentions_pronoun_distribution": accumulated_data["mentions_pronoun_distribution"],
         "total_feminine_coded_words": accumulated_data["total_feminine_coded_words"],
-        "feminine_coded_words_gender_distribution": accumulated_data["feminine_coded_words_gender_distribution"],
+        "feminine_coded_words_pronoun_distribution": accumulated_data["feminine_coded_words_pronoun_distribution"],
         "total_masculine_coded_words": accumulated_data["total_masculine_coded_words"],
-        "masculine_coded_words_gender_distribution": accumulated_data["masculine_coded_words_gender_distribution"],
+        "masculine_coded_words_pronoun_distribution": accumulated_data["masculine_coded_words_pronoun_distribution"],
         "contains_majority_gender_neutral": docs_with_majority_gender_neutral,
         "generic_masculine": docs_with_generic_masculine,
         "average_metrics": averages,
         "median_metrics": medians,
-        "min_metrics": mins,
-        "max_metrics": maxs,
         "top_pmi_words": accumulated_data["pmi_words"].most_common(10),
-        "top_pmi_words_gender_distribution": accumulated_data["top_pmi_words_gender_distribution"],
+        "top_pmi_words_pronoun_distribution": accumulated_data["top_pmi_words_pronoun_distribution"],
         "average_sentiment_all": average_sentiment_all,
-        "sentiment_by_gender": sentiment_by_gender
+        "sentiment_by_pronoun": sentiment_by_pronoun
     }
 
     return aggregated_report, individual_values
 
 
-def visualise_boxplot(data, title, xlabel, output_file, exclude_outliers=False, xlim=None):
+def visualise_boxplot(data, title, xlabel, output_file, exclude_outliers=True, xlim=None):
     """
     Create and save a boxplot for the given data, optionally excluding the top 10 outliers and adjusting the X-axis range.
 
@@ -398,18 +372,18 @@ def visualise_boxplot(data, title, xlabel, output_file, exclude_outliers=False, 
     df = pd.DataFrame({key: pd.Series(values) for key, values in filtered_data.items()}).melt(var_name="Group",
                                                                                               value_name="Values")
 
-    sns.boxplot(data=df, x="Values", y="Group", orient="h")
+    sns.boxplot(data=df, x="Values", y="Group", orient="h", showfliers=False)
 
-    plt.title(' ', fontsize=30)
-    plt.xlabel(xlabel, fontsize=55)
-    plt.ylabel('Gender', fontsize=55)
+    plt.title(' ', fontsize=40)
+    plt.xlabel(xlabel, fontsize=35)
+    plt.ylabel('Pronouns', fontsize=35)
 
     # Set X-axis limits if provided
     if xlim:
         plt.xlim(xlim)
 
-    plt.xticks(fontsize=50, rotation=90)
-    plt.yticks(fontsize=50)
+    plt.xticks(fontsize=35)
+    plt.yticks(fontsize=35)
 
     plt.tight_layout()
     plt.savefig(output_file, dpi=600)
@@ -453,41 +427,39 @@ def visualise_aggregated_report(individual_values, output_dir):
     """
     os.makedirs(output_dir, exist_ok=True)
 
-    # Gender and sentiment-related metrics with custom X-axis ranges
-    gender_metrics = {
-        "Gender Distribution": {
+    # Pronoun and sentiment-related metrics with custom X-axis ranges
+    pronoun_metrics = {
+        "Pronoun Distribution": {
             "total": individual_values["total_actors"],
-            "woman": individual_values["gender_distribution_woman"],
-            "man": individual_values["gender_distribution_man"],
-            "unknown": individual_values["gender_distribution_unknown"],
+            "she_her": individual_values["pronoun_distribution_she_her"],
+            "he_him": individual_values["pronoun_distribution_he_him"]
         },
-        "Mentions by Gender": {
+        "Mentions by Pronouns": {
             "total": individual_values["total_mentions"],
-            "woman": individual_values["mentions_gender_distribution_woman"],
-            "man": individual_values["mentions_gender_distribution_man"],
-            "unknown": individual_values["mentions_gender_distribution_unknown"],
+            "she_her": individual_values["mentions_pronoun_distribution_she_her"],
+            "he_him": individual_values["mentions_pronoun_distribution_he_him"]
         },
-        "Sentiment by Gender": {
+        "Sentiment by Pronouns": {
             "total": individual_values["average_sentiment_all"],
-            "woman": individual_values["sentiment_by_gender_woman"],
-            "man": individual_values["sentiment_by_gender_man"],
-            "unknown": individual_values["sentiment_by_gender_unknown"],
+            "she_her": individual_values["sentiment_by_pronoun_she_her"],
+            "he_him": individual_values["sentiment_by_pronoun_he_him"]
         }
     }
 
     xlim_ranges = {
-        "Gender Distribution": (0, 20),
-        "Mentions by Gender": (0, 50),
-        "Sentiment by Gender": (-0.27, 0.27),
+        "GPronoun Distribution": (0, 20),
+        "Mentions by Pronouns": (0, 50),
+        "Sentiment by Pronouns": (-0.27, 0.27),
     }
 
-    for metric, data in gender_metrics.items():
+    for metric, data in pronoun_metrics.items():
         output_file = os.path.join(output_dir, f"{metric.replace(' ', '_')}_boxplot.png")
         visualise_boxplot(
             data,
             title=f"{metric} Boxplot",
             xlabel=metric,
             output_file=output_file,
+            exclude_outliers=True,
             xlim=xlim_ranges.get(metric),
         )
 
@@ -528,22 +500,17 @@ def visualise_knowledgebases(temp_dir, results_dir):
         "total_masculine_coded_words": [],
         "contains_majority_gender_neutral": [],
         "generic_masculine": [],
-        "gender_distribution_woman": [],
-        "gender_distribution_man": [],
-        "gender_distribution_unknown": [],
-        "mentions_gender_distribution_woman": [],
-        "mentions_gender_distribution_man": [],
-        "mentions_gender_distribution_unknown": [],
-        "feminine_coded_words_gender_distribution_woman": [],
-        "feminine_coded_words_gender_distribution_man": [],
-        "feminine_coded_words_gender_distribution_unknown": [],
-        "masculine_coded_words_gender_distribution_woman": [],
-        "masculine_coded_words_gender_distribution_man": [],
-        "masculine_coded_words_gender_distribution_unknown": [],
+        "pronoun_distribution_she_her": [],
+        "pronoun_distribution_he_him": [],
+        "mentions_pronoun_distribution_she_her": [],
+        "mentions_pronoun_distribution_he_him": [],
+        "feminine_coded_words_pronoun_distribution_she_her": [],
+        "feminine_coded_words_pronoun_distribution_he_him": [],
+        "masculine_coded_words_pronoun_distribution_she_her": [],
+        "masculine_coded_words_pronoun_distribution_he_him": [],
         "average_sentiment_all": [],
-        "sentiment_by_gender_woman": [],
-        "sentiment_by_gender_man": [],
-        "sentiment_by_gender_unknown": []
+        "sentiment_by_pronoun_she_her": [],
+        "sentiment_by_gpronoun_he_him": []
     }
 
     # Combine individual knowledgebase values
@@ -561,21 +528,21 @@ def visualise_knowledgebases(temp_dir, results_dir):
         individual_values["total_masculine_coded_words"].append(report["total_masculine_coded_words"])
         individual_values["average_sentiment_all"].append(report["average_sentiment"])
 
-        for subkey in ["woman", "man", "unknown"]:
-            individual_values[f"gender_distribution_{subkey}"].append(
-                report["gender_distribution"].get(subkey, 0)
+        for subkey in ["she_her", "he_him"]:
+            individual_values[f"pronoun_distribution_{subkey}"].append(
+                report["pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"mentions_gender_distribution_{subkey}"].append(
-                report["mentions_gender_distribution"].get(subkey, 0)
+            individual_values[f"mentions_pronoun_distribution_{subkey}"].append(
+                report["mentions_pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"feminine_coded_words_gender_distribution_{subkey}"].append(
-                report["feminine_coded_words_gender_distribution"].get(subkey, 0)
+            individual_values[f"feminine_coded_words_pronoun_distribution_{subkey}"].append(
+                report["feminine_coded_words_pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"masculine_coded_words_gender_distribution_{subkey}"].append(
-                report["masculine_coded_words_gender_distribution"].get(subkey, 0)
+            individual_values[f"masculine_coded_words_pronoun_distribution_{subkey}"].append(
+                report["masculine_coded_words_pronoun_distribution"].get(subkey, 0)
             )
-            individual_values[f"sentiment_by_gender_{subkey}"].append(
-                report["sentiment_by_gender"].get(subkey)
+            individual_values[f"sentiment_by_pronoun_{subkey}"].append(
+                report["sentiment_by_pronoun"].get(subkey)
             )
 
     # Visualise and save the aggregated data

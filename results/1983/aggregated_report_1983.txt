@@ -1,0 +1,60 @@
+Aggregated Report for 1983
+============================================================
+
+Total Texts: 0
+Total Actors: 4
+Pronoun Distribution: {'she_her': 2, 'he_him': 2}
+Total Mentions: 18
+Mentions by Pronoun: {'he_him': 13, 'she_her': 5}
+
+
+Average Metrics:
+  total_actors: 4.00
+  total_mentions: 18.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 2.00
+  pronoun_distribution_he_him: 2.00
+  mentions_pronoun_distribution_she_her: 5.00
+  mentions_pronoun_distribution_he_him: 13.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: -0.05
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: -0.10
+
+Median Metrics:
+  total_actors: 4.00
+  total_mentions: 18.00
+  total_feminine_coded_words: 0.00
+  total_masculine_coded_words: 0.00
+  contains_majority_gender_neutral: 0.00
+  generic_masculine: 0.00
+  pronoun_distribution_she_her: 2.00
+  pronoun_distribution_he_him: 2.00
+  mentions_pronoun_distribution_she_her: 5.00
+  mentions_pronoun_distribution_he_him: 13.00
+  feminine_coded_words_pronoun_distribution_she_her: 0.00
+  feminine_coded_words_pronoun_distribution_he_him: 0.00
+  masculine_coded_words_pronoun_distribution_she_her: 0.00
+  masculine_coded_words_pronoun_distribution_he_him: 0.00
+  average_sentiment_all: -0.05
+  sentiment_by_pronoun_she_her: 0.00
+  sentiment_by_pronoun_he_him: -0.10
+Top PMI Adjectives Table:
+All                  she/her              he/him              
+--------------------------------------------------------------------------------
+gewaltsamen          gewaltsamen          grundlegenden       
+grundlegenden        polnischen           jetzigen            
+jetzigen             amerikanische        erstrebten          
+erstrebten           begrenzten           gewaltsamen         
+westlichen           korporativistische   westlichen          
+stabile                                   stabile             
+polnischen                                                    
+amerikanische                                                 
+begrenzten                                                    
+korporativistische                                            
