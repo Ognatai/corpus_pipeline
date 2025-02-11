@@ -3,7 +3,7 @@ complimentary repo for "taz2024full: Analysing German Newspapers for Gender Bias
 
 ## Contents:  
 ``code\``: pieline code  
-``results\``: pipline results including figures and reports 
+``results\``: pipline results including figures and reports   
 ``setup\``: packages needed for pipeline setup  
 
 ## Additional Setup Information  
