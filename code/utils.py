@@ -7,7 +7,7 @@ from collections import Counter
 from collections import defaultdict
 
 
-def save_human_readable_report(aggregated_report, results_dir, year, temp_dir):
+def save_human_readable_report(aggregated_report, results_dir, year, temp_dir, total_texts):
     """
     Save a human-readable report to a .txt file.
 
@@ -20,13 +20,14 @@ def save_human_readable_report(aggregated_report, results_dir, year, temp_dir):
     report_path = results_dir / f"aggregated_report_{year}.txt"
     try:
         # Count total number of texts by counting the knowledge base files
-        total_texts = len(list(temp_dir.glob("knowledgebase_*.pkl")))
+        actor_texts = len(list(temp_dir.glob("knowledgebase_*.pkl")))
 
         with open(report_path, "w", encoding="utf-8") as file:
             file.write(f"Aggregated Report for {year}\n")
             file.write("=" * 60 + "\n\n")
 
             file.write(f"Total Texts: {total_texts}\n")
+            file.write(f"Texts with Actors: {actor_texts}\n")
             file.write(f"Total Actors: {aggregated_report['total_actors']}\n")
             file.write(f"Pronoun Distribution: {aggregated_report['pronoun_distribution']}\n")
             file.write(f"Total Mentions: {aggregated_report['total_mentions']}\n")
@@ -372,7 +373,8 @@ def visualise_boxplot(data, title, xlabel, output_file, exclude_outliers=True, x
     df = pd.DataFrame({key: pd.Series(values) for key, values in filtered_data.items()}).melt(var_name="Group",
                                                                                               value_name="Values")
 
-    sns.boxplot(data=df, x="Values", y="Group", orient="h", showfliers=False)
+    palette = sns.color_palette("Blues", n_colors=len(df["Group"].unique()))
+    sns.boxplot(data=df, x="Values", y="Group", orient="h", showfliers=False, palette=palette)
 
     plt.title(' ', fontsize=40)
     plt.xlabel(xlabel, fontsize=35)
@@ -406,7 +408,7 @@ def visualise_barplot(data, title, xlabel, output_file):
 
     # Create the barplot
     plt.figure(figsize=(8, 6))
-    sns.barplot(x=list(counts.keys()), y=list(counts.values()), palette="muted")
+    sns.barplot(x=list(counts.keys()), y=list(counts.values()), palette="Blues")
 
     plt.title(title)
     plt.xlabel(xlabel)
@@ -549,8 +551,4 @@ def visualise_knowledgebases(temp_dir, results_dir):
     print(f"[INFO] Saving visualisations to {results_dir}...")
     visualise_aggregated_report(individual_values, results_dir)
     print(f"[INFO] Visualisation complete!")
-
-
-            
-
 

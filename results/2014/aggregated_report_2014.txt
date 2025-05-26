@@ -1,24 +1,25 @@
 Aggregated Report for 2014
 ============================================================
 
-Total Texts: 0
+Total Texts: 48911
+Texts with Actors: 14115
 Total Actors: 21781
 Pronoun Distribution: {'he_him': 13523, 'she_her': 8258}
-Total Mentions: 128701
-Mentions by Pronoun: {'he_him': 82381, 'she_her': 46320}
+Total Mentions: 129635
+Mentions by Pronoun: {'he_him': 83011, 'she_her': 46624}
 
 
-Average Metrics:
+Mean Metrics:
   total_actors: 1.54
-  total_mentions: 9.12
+  total_mentions: 9.18
   total_feminine_coded_words: 0.19
   total_masculine_coded_words: 0.08
   contains_majority_gender_neutral: 0.00
   generic_masculine: 0.45
   pronoun_distribution_she_her: 0.59
   pronoun_distribution_he_him: 0.96
-  mentions_pronoun_distribution_she_her: 3.28
-  mentions_pronoun_distribution_he_him: 5.84
+  mentions_pronoun_distribution_she_her: 3.30
+  mentions_pronoun_distribution_he_him: 5.88
   feminine_coded_words_pronoun_distribution_she_her: 0.07
   feminine_coded_words_pronoun_distribution_he_him: 0.12
   masculine_coded_words_pronoun_distribution_she_her: 0.03
@@ -45,11 +46,12 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------
-deutschen            junge                deutschen           
-letzten              letzten              letzten             
+letzten              junge                deutschen           
+deutschen            letzten              letzten             
 berliner             deutschen            berliner            
 junge                jungen               deutsche            
 deutsche             berliner             politischen         

@@ -1,23 +1,24 @@
 Aggregated Report for 2012
 ============================================================
 
-Total Texts: 0
+Total Texts: 53640
+Texts with Actors: 15130
 Total Actors: 23138
 Pronoun Distribution: {'she_her': 8780, 'he_him': 14358}
-Total Mentions: 137923
-Mentions by Pronoun: {'she_her': 49739, 'he_him': 88184}
+Total Mentions: 137818
+Mentions by Pronoun: {'she_her': 49589, 'he_him': 88229}
 
 
-Average Metrics:
+Mean Metrics:
   total_actors: 1.53
-  total_mentions: 9.12
+  total_mentions: 9.11
   total_feminine_coded_words: 0.18
   total_masculine_coded_words: 0.09
   contains_majority_gender_neutral: 0.00
   generic_masculine: 0.47
   pronoun_distribution_she_her: 0.58
   pronoun_distribution_he_him: 0.95
-  mentions_pronoun_distribution_she_her: 3.29
+  mentions_pronoun_distribution_she_her: 3.28
   mentions_pronoun_distribution_he_him: 5.83
   feminine_coded_words_pronoun_distribution_she_her: 0.07
   feminine_coded_words_pronoun_distribution_he_him: 0.11
@@ -45,6 +46,7 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------

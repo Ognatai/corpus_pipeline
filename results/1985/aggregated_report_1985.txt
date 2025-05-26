@@ -1,14 +1,15 @@
 Aggregated Report for 1985
 ============================================================
 
-Total Texts: 0
+Total Texts: 4
+Texts with Actors: 1
 Total Actors: 3
 Pronoun Distribution: {'she_her': 3}
 Total Mentions: 118
 Mentions by Pronoun: {'she_her': 118}
 
 
-Average Metrics:
+Mean Metrics:
   total_actors: 3.00
   total_mentions: 118.00
   total_feminine_coded_words: 0.00
@@ -43,6 +44,7 @@ Median Metrics:
   masculine_coded_words_pronoun_distribution_he_him: 0.00
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------

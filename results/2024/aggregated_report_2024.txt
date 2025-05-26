@@ -1,24 +1,25 @@
 Aggregated Report for 2024
 ============================================================
 
-Total Texts: 0
+Total Texts: 24075
+Texts with Actors: 7102
 Total Actors: 12052
 Pronoun Distribution: {'he_him': 6479, 'she_her': 5573}
-Total Mentions: 78145
-Mentions by Pronoun: {'he_him': 42070, 'she_her': 36075}
+Total Mentions: 78448
+Mentions by Pronoun: {'he_him': 42116, 'she_her': 36332}
 
 
-Average Metrics:
+Mean Metrics:
   total_actors: 1.70
-  total_mentions: 11.00
+  total_mentions: 11.05
   total_feminine_coded_words: 0.27
   total_masculine_coded_words: 0.12
   contains_majority_gender_neutral: 0.00
   generic_masculine: 0.31
   pronoun_distribution_she_her: 0.78
   pronoun_distribution_he_him: 0.91
-  mentions_pronoun_distribution_she_her: 5.08
-  mentions_pronoun_distribution_he_him: 5.92
+  mentions_pronoun_distribution_she_her: 5.12
+  mentions_pronoun_distribution_he_him: 5.93
   feminine_coded_words_pronoun_distribution_she_her: 0.13
   feminine_coded_words_pronoun_distribution_he_him: 0.14
   masculine_coded_words_pronoun_distribution_she_her: 0.06
@@ -45,6 +46,7 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------
@@ -55,6 +57,6 @@ politische           berliner             politische
 berliner             politische           politischen         
 russischen           jungen               berliner            
 politischen          deutsche             israelischen        
-deutsche             politischen          deutsche            
-nächsten             alte                 nächsten            
+deutsche             alte                 deutsche            
+nächsten             politischen          nächsten            
 israelischen         nächsten             ehemaligen          

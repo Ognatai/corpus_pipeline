@@ -1,35 +1,36 @@
 Aggregated Report for 2005
 ============================================================
 
-Total Texts: 0
-Total Actors: 15927
-Pronoun Distribution: {'she_her': 6295, 'he_him': 9632}
-Total Mentions: 95339
-Mentions by Pronoun: {'he_him': 60078, 'she_her': 35261}
+Total Texts: 65239
+Texts with Actors: 15027
+Total Actors: 22368
+Pronoun Distribution: {'she_her': 8495, 'he_him': 13873}
+Total Mentions: 125704
+Mentions by Pronoun: {'he_him': 81311, 'she_her': 44393}
 
 
-Average Metrics:
-  total_actors: 1.59
-  total_mentions: 9.49
-  total_feminine_coded_words: 0.18
-  total_masculine_coded_words: 0.10
+Mean Metrics:
+  total_actors: 1.49
+  total_mentions: 8.37
+  total_feminine_coded_words: 0.17
+  total_masculine_coded_words: 0.09
   contains_majority_gender_neutral: 0.00
-  generic_masculine: 0.00
-  pronoun_distribution_she_her: 0.63
-  pronoun_distribution_he_him: 0.96
-  mentions_pronoun_distribution_she_her: 3.51
-  mentions_pronoun_distribution_he_him: 5.98
-  feminine_coded_words_pronoun_distribution_she_her: 0.07
-  feminine_coded_words_pronoun_distribution_he_him: 0.11
-  masculine_coded_words_pronoun_distribution_she_her: 0.04
-  masculine_coded_words_pronoun_distribution_he_him: 0.06
+  generic_masculine: 0.43
+  pronoun_distribution_she_her: 0.57
+  pronoun_distribution_he_him: 0.92
+  mentions_pronoun_distribution_she_her: 2.95
+  mentions_pronoun_distribution_he_him: 5.41
+  feminine_coded_words_pronoun_distribution_she_her: 0.06
+  feminine_coded_words_pronoun_distribution_he_him: 0.10
+  masculine_coded_words_pronoun_distribution_she_her: 0.03
+  masculine_coded_words_pronoun_distribution_he_him: 0.05
   average_sentiment_all: -0.03
-  sentiment_by_pronoun_she_her: -0.04
-  sentiment_by_pronoun_he_him: -0.03
+  sentiment_by_pronoun_she_her: -0.03
+  sentiment_by_pronoun_he_him: -0.02
 
 Median Metrics:
   total_actors: 1.00
-  total_mentions: 5.00
+  total_mentions: 4.00
   total_feminine_coded_words: 0.00
   total_masculine_coded_words: 0.00
   contains_majority_gender_neutral: 0.00
@@ -45,16 +46,17 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------
-deutschen            junge                deutschen           
-letzten              deutschen            letzten             
+deutschen            junge                letzten             
+letzten              deutschen            deutschen           
 berliner             letzten              berliner            
 junge                berliner             nächsten            
-alten                alten                alten               
-deutsche             deutsche             politischen         
-nächsten             jungen               jungen              
-jungen               alte                 deutsche            
-politischen          letzte               politische          
-alte                 einzige              alte                
+alten                alten                politischen         
+nächsten             deutsche             alten               
+deutsche             alte                 deutsche            
+jungen               jungen               politische          
+politischen          letzte               jungen              
+alte                 einzige              letzte              

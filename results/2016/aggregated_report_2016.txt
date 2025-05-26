@@ -1,24 +1,25 @@
 Aggregated Report for 2016
 ============================================================
 
-Total Texts: 0
+Total Texts: 47996
+Texts with Actors: 13711
 Total Actors: 21796
 Pronoun Distribution: {'she_her': 9024, 'he_him': 12772}
-Total Mentions: 144780
-Mentions by Pronoun: {'she_her': 61020, 'he_him': 83760}
+Total Mentions: 143604
+Mentions by Pronoun: {'she_her': 59989, 'he_him': 83615}
 
 
-Average Metrics:
+Mean Metrics:
   total_actors: 1.59
-  total_mentions: 10.56
+  total_mentions: 10.47
   total_feminine_coded_words: 0.20
   total_masculine_coded_words: 0.10
   contains_majority_gender_neutral: 0.00
   generic_masculine: 0.44
   pronoun_distribution_she_her: 0.66
   pronoun_distribution_he_him: 0.93
-  mentions_pronoun_distribution_she_her: 4.45
-  mentions_pronoun_distribution_he_him: 6.11
+  mentions_pronoun_distribution_she_her: 4.38
+  mentions_pronoun_distribution_he_him: 6.10
   feminine_coded_words_pronoun_distribution_she_her: 0.09
   feminine_coded_words_pronoun_distribution_he_him: 0.11
   masculine_coded_words_pronoun_distribution_she_her: 0.04
@@ -45,6 +46,7 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------
@@ -55,6 +57,6 @@ berliner             deutsche             politische
 deutsche             berliner             politischen         
 politische           jungen               alten               
 alten                alte                 deutsche            
-politischen          politische           nächsten            
-jungen               nächsten             junge               
+politischen          politische           junge               
+jungen               nächsten             nächsten            
 nächsten             einzige              einzige             

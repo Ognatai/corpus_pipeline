@@ -1,31 +1,32 @@
 Aggregated Report for 1986
 ============================================================
 
-Total Texts: 0
-Total Actors: 614
-Pronoun Distribution: {'he_him': 410, 'she_her': 204}
-Total Mentions: 3338
-Mentions by Pronoun: {'he_him': 2289, 'she_her': 1049}
+Total Texts: 5378
+Texts with Actors: 825
+Total Actors: 1070
+Pronoun Distribution: {'he_him': 761, 'she_her': 309}
+Total Mentions: 5209
+Mentions by Pronoun: {'he_him': 3798, 'she_her': 1411}
 
 
-Average Metrics:
-  total_actors: 1.37
-  total_mentions: 7.47
-  total_feminine_coded_words: 0.15
+Mean Metrics:
+  total_actors: 1.30
+  total_mentions: 6.31
+  total_feminine_coded_words: 0.13
   total_masculine_coded_words: 0.06
   contains_majority_gender_neutral: 0.00
-  generic_masculine: 0.00
-  pronoun_distribution_she_her: 0.46
+  generic_masculine: 0.55
+  pronoun_distribution_she_her: 0.37
   pronoun_distribution_he_him: 0.92
-  mentions_pronoun_distribution_she_her: 2.35
-  mentions_pronoun_distribution_he_him: 5.12
-  feminine_coded_words_pronoun_distribution_she_her: 0.06
+  mentions_pronoun_distribution_she_her: 1.71
+  mentions_pronoun_distribution_he_him: 4.60
+  feminine_coded_words_pronoun_distribution_she_her: 0.04
   feminine_coded_words_pronoun_distribution_he_him: 0.09
   masculine_coded_words_pronoun_distribution_she_her: 0.02
   masculine_coded_words_pronoun_distribution_he_him: 0.04
   average_sentiment_all: -0.02
-  sentiment_by_pronoun_she_her: -0.03
-  sentiment_by_pronoun_he_him: -0.02
+  sentiment_by_pronoun_she_her: -0.04
+  sentiment_by_pronoun_he_him: -0.01
 
 Median Metrics:
   total_actors: 1.00
@@ -45,16 +46,17 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------
-letzten              grünen               letzten             
-grünen               alte                 deutschen           
-politischen          letzten              politischen         
-deutschen            grüne                nächsten            
-nächsten             alten                berliner            
-politische           politischen          grünen              
-berliner             verschiedenen        politische          
-einzige              weiblichen           bundesdeutschen     
-grüne                männlichen           sowjetische         
-hamburger            hamburger            einzige             
+letzten              letzten              letzten             
+politischen          grüne                politischen         
+berliner             grünen               berliner            
+ehemaligen           politischen          deutschen           
+politische           alte                 ehemaligen          
+grünen               alten                politische          
+nächsten             einzige              letzte              
+deutschen            berliner             französischen       
+einzige              öffentliche          nächsten            
+letzte               öffentlichen         einzige             

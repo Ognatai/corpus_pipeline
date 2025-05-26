@@ -1,24 +1,25 @@
 Aggregated Report for 2023
 ============================================================
 
-Total Texts: 0
+Total Texts: 28730
+Texts with Actors: 10284
 Total Actors: 17161
 Pronoun Distribution: {'he_him': 9088, 'she_her': 8073}
-Total Mentions: 109634
-Mentions by Pronoun: {'he_him': 60008, 'she_her': 49626}
+Total Mentions: 108607
+Mentions by Pronoun: {'he_him': 59316, 'she_her': 49291}
 
 
-Average Metrics:
+Mean Metrics:
   total_actors: 1.67
-  total_mentions: 10.66
+  total_mentions: 10.56
   total_feminine_coded_words: 0.27
   total_masculine_coded_words: 0.11
   contains_majority_gender_neutral: 0.00
   generic_masculine: 0.31
   pronoun_distribution_she_her: 0.79
   pronoun_distribution_he_him: 0.88
-  mentions_pronoun_distribution_she_her: 4.83
-  mentions_pronoun_distribution_he_him: 5.84
+  mentions_pronoun_distribution_she_her: 4.79
+  mentions_pronoun_distribution_he_him: 5.77
   feminine_coded_words_pronoun_distribution_she_her: 0.13
   feminine_coded_words_pronoun_distribution_he_him: 0.14
   masculine_coded_words_pronoun_distribution_she_her: 0.05
@@ -45,6 +46,7 @@ Median Metrics:
   average_sentiment_all: 0.00
   sentiment_by_pronoun_she_her: 0.00
   sentiment_by_pronoun_he_him: 0.00
+
 Top PMI Adjectives Table:
 All                  she/her              he/him              
 --------------------------------------------------------------------------------

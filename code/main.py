@@ -28,6 +28,9 @@ def process_single_file_multiprocessing(file_path, temp_dir, max_articles=None):
         file_path (str): Path to the JSON file.
         temp_dir (Path): Path to the temporary directory for storing results.
         max_articles (int, optional): Maximum number of articles to process. Defaults to None.
+
+    Returns:
+        int: Number of texts processed from this file.
     """
     try:
         print(f"[INFO] Processing file: {file_path}")
@@ -40,15 +43,23 @@ def process_single_file_multiprocessing(file_path, temp_dir, max_articles=None):
         print(f"[INFO] SpaCy pipeline initialised for {file_path}")
 
         raw_texts = load_texts_from_file(file_path, limit=max_articles)
+        text_count = 0
+        
         for article_id, text in raw_texts.items():
+            text_count += 1
+            
             try:
                 doc = nlp(text)  # Process the text with the fully-initialised pipeline
                 knowledgebase = process_single_text(doc , stopwords)
 
                 if not knowledgebase.empty:
                     save_knowledgebase(knowledgebase, temp_dir, article_id)
+                    
             except Exception as e:
                 print(f"[ERROR] Failed to process Article ID {article_id}: {e}")
+                
+        return text_count        
+                
     except Exception as e:
         print(f"[ERROR] Error processing file {file_path}: {e}")
 
@@ -64,10 +75,12 @@ def process_directory(directory, temp_dir, max_articles=None, max_workers=5):
         max_workers (int, optional): Number of parallel workers. Defaults to 4.
 
     Returns:
-        None
+        int: Total number of texts processed across all files.
     """
     temp_dir.mkdir(parents=True, exist_ok=True)
     json_files = [os.path.join(directory, file_name) for file_name in os.listdir(directory) if file_name.endswith(".json")]
+    
+    total_texts = 0
 
     # Use ProcessPoolExecutor for parallel processing
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
@@ -78,16 +91,20 @@ def process_directory(directory, temp_dir, max_articles=None, max_workers=5):
 
         for future in futures:
             try:
-                future.result()  # Wait for completion and catch any exceptions
+                result = future.result()  # Wait for completion and catch any exceptions
+                total_texts += result
             except Exception as e:
                 print(f"[ERROR] Error during processing: {e}")
+                
+    return total_texts
 
 
 def analyse_and_visualise_year(directory, temp_dir, results_dir, year, max_articles=None):
     print(f"[INFO] Starting analysis for {year}...")
-    process_directory(directory, temp_dir, max_articles)
+    total_texts = process_directory(directory, temp_dir, max_articles)
     
     results_dir.mkdir(parents=True, exist_ok=True)
+       
 
     # Load and combine all knowledgebases
     print(f"[INFO] Loading processed knowledgebases from {temp_dir}...")
@@ -116,7 +133,7 @@ def analyse_and_visualise_year(directory, temp_dir, results_dir, year, max_artic
         print(f"[INFO] Aggregated knowledgebase saved to {aggregated_knowledgebase_path}.")
 
         # Save the human-readable report
-        save_human_readable_report(aggregated_report, results_dir, year, temp_dir)
+        save_human_readable_report(aggregated_report, results_dir, year, temp_dir, total_texts)
 
         # Save visualisations
         print(f"[INFO] Saving visualisations for {year} to {results_dir}...")
@@ -125,17 +142,12 @@ def analyse_and_visualise_year(directory, temp_dir, results_dir, year, max_artic
     else:
         print(f"[INFO] No knowledgebases processed for {year}.")
 
-    # Clean up temporary directory
-    # print(f"[INFO] Cleaning up temporary files for {year}...")
-    # shutil.rmtree(temp_dir, ignore_errors=True)
-    # print(f"[INFO] Temporary files cleaned up for {year}.")
-
 
 def main():
     """
     Main function to process and analyse data for all years.
     """
-    CORPUS_DIR = Path("corpus")
+    CORPUS_DIR = Path(__file__).resolve().parents[2] / "corpus" 
     TEMP_DIR = Path("tmp")
     RESULTS_DIR = Path("results")
 
